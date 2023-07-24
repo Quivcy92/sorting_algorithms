@@ -1,48 +1,29 @@
 #include "sort.h"
 
 /**
- * swap_bubble - function for sorting with swap method.
- *@a: element to be swapped.
- *@b: element to be swapped.
- * Return: nothing.
- */
-
-void swap_bubble(int *a, int *b)
-{
-	int temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-/**
- * bubble_sort - sorts an array using bubble sort algorithm.
- *@array: array to be sorted.
- *@size: size to be sorted.
- * Return: void.
- */
-
+  * bubble_sort - A function for bubble sorting.
+  * @array: The array to sort.
+  * @size: THe length of the aaray.
+  * Return: Nothing.
+  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, sz = size;
-	bool booln = false;
+	size_t i = 0, j = 0;
+	int aux = 0;
 
-	if (array == NULL || size < 2)
+	if (array == NULL || size == 0)
 		return;
-
-	while (booln == false)
+	for (; i < size - 1; i++)
 	{
-		booln = true;
-		for (i = 0; i < sz - 1; i++)
+		for (j = 0; j < size - i - 1; j++)
 		{
-			if (array[i] > array[i + 1])
+			if (array[j] > array[j + 1])
 			{
-				swap_bubble(array + i, array + i + 1);
+				aux = array[j + 1];
+				array[j + 1] = array[j];
+				array[j] = aux;
 				print_array(array, size);
-				booln = false;
 			}
 		}
-		sz--;
 	}
 }
